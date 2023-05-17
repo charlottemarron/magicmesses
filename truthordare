@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Truth or Dare</title>
+	<style>
+		body {
+			background-color: #DDCBFF;
+			font-family: Gopher, sans-serif;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 100px;
+		}
+		.container {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			margin-top: 50px;
+		}
+		.btn {
+			background-color: #62894D;
+			color: white;
+			font-size: 24px;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			margin: 0 20px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+		.btn:hover {
+			transform: scale(1.1);
+		}
+		.hidden {
+			display: none;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+			margin-top: 50px;
+			max-width: 90%;
+			height: auto;
+			border-radius: 10px;
+			box-shadow: 0 0 10px #000;
+		}
+		.replay {
+			display: block;
+			margin: 0 auto;
+			margin-top: 50px;
+			background-color: #62894D;
+			color: white;
+			font-size: 24px;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+		.replay:hover {
+			transform: scale(1.1);
+		}
+	</style>
+</head>
+<body>
+	<h1>Truth or Dare</h1>
+	<div class="container">
+		<button class="btn" id="truthBtn">Truth</button>
+		<button class="btn" id="dareBtn">Dare</button>
+	</div>
+
+	<div class="hidden" id="imageContainer">
+		<img src="" alt="Random Image" id="randomImage">
+		<button class="replay" id="replayBtn">Play Again</button>
+	</div>
+
+	<script>
+		var truthImages = [
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+		];
+
+		var dareImages = [
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+			"https://images.pexels.com/photos/16638671/pexels-photo-16638671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+		];
+
+		function getRandomImage(images) {
+			var randomIndex = Math.floor(Math.random() * images.length);
+			return images[randomIndex];
+		}
+
+		function showImage(image) {
+			var imageContainer = document.getElementById("imageContainer");
+			var randomImage = document.getElementById("randomImage");
+			randomImage.src = image;
+			imageContainer.classList.remove("hidden");
+			document.querySelector(".container").classList.add("hidden");
+		}
+
+		document.getElementById("truthBtn").addEventListener("click", function() {
+			var randomImage = getRandomImage(truthImages);
+			showImage(randomImage);
+		});
+
+		document.getElementById("dareBtn").addEventListener("click", function() {
+			var randomImage = getRandomImage(dareImages);
+			showImage(randomImage);
+		});
+
+		document.getElementById("replayBtn").addEventListener("click", function() {
+			var imageContainer = document.getElementById("imageContainer");
+			imageContainer.classList.add("hidden");
+			document.querySelector(".container").classList.remove("hidden");
+		});
+	</script>
+</body>
+</html>
